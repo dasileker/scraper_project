@@ -24,10 +24,6 @@
 ├── Gemfile.lock
 ├── README.md
 ├── scrapee.rb
-└── spec
-    ├── 01_tic_tac_toe_spec.rb
-    ├── 02_cli_spec.rb
-    └── spec_helper.rb
 ```
 
 # how to Run the repo 
