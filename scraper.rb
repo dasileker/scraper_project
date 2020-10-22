@@ -26,3 +26,6 @@ def scraper
     end
 
 end
+
+scraper
+
