@@ -20,12 +20,24 @@ def scraper
         url: auto.css('a')[0].attributes["href"].value
       }
       carss << auto 
-      puts "Added #{auto[:title]}"
-      puts ""
-      
+      puts "Added #{auto[:title]},
+      #{auto[:location]},
+      #{auto[:date]},
+      #{auto[:url]}"
     end
 
 end
 
 scraper
 
+filepath = "scraper.csv"
+
+csv_option = {headers: :first_row, col_sep: ','}
+
+CSV.open(filepath, 'wb', csv_option) do |csv|
+  csv << ['title', 'index']
+
+  scraper.each_with_index do |item, index|
+    csv <<  [item, index]
+  end
+end
