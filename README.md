@@ -30,3 +30,29 @@
     └── spec_helper.rb
 ```
 
+# how to Run the repo 
+
+- downlod the repo from here : (https://github.com/dasileker/scraper_project/tree/features)
+
+- clone the repo go to Git bash & enter git clone: (git@github.com:dasileker/scraper_project.git )
+
+- Go to cd scraper_project 
+
+- and type ruby scraper.rb
+
+
+# conclusion
+
+
+- as you can see I did add a logic to the scrape method to export the data into a csv file, and every time you run the scraper.rb it will generate a new data and exporte it to the csv file.
+
+
+## Authors:
+👤 Amine
+
+* dasileker (https://github.com/dasilekr)
+* zerradi amine (https://linkedin.com/dasileker)
+
+## Show your support
+
+Give a ⭐️ if you like this project!
