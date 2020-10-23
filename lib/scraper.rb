@@ -14,9 +14,16 @@ class Scraper
             else
               '/' + @pgae.to_s
             end
-    @html = 'hhtps://katcr.to/search' +@query + @page + '/'
+    @html = 'https://katcr.to/usearch/' + @query + @page + '/'
     @count = 0
     @result = 0
+  end
+
+  def scraper
+    @raw = HTTParty.get(@html)
+    @vue = Nokogiri::HTML(@raw)
+    div = @vue.css('table.data')
+    @table = div.css('tbody')
   end
 
 end
