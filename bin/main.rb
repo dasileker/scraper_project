@@ -51,9 +51,9 @@ def site(input = nil, query = nil, total = nil, page = 1)
   end
 end
 
-p '/-/-/-/-/Search any Torrents/-/-/-/-/'
-p '/-/-/-/-/what torrent you want to scrape?/-/-/-/-/'
+p '***Search any Torrents***'
+p '*****what torrent you want to scrape?******'
 site
 
-p '/*/NO ads here just torrent/*/'
+p '/*****If you like this project please approve it\u{1f600}*****/'
 

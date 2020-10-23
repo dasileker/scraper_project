@@ -16,6 +16,9 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
+    unicode-display_width (1.7.0)
 
 PLATFORMS
   x64-mingw32
@@ -24,6 +27,7 @@ DEPENDENCIES
   httparty
   nokogiri
   pry
+  terminal-table
 
 BUNDLED WITH
    2.1.4
