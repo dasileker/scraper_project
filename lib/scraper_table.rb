@@ -2,7 +2,7 @@ require 'terminal-table'
 
 class ScrapedTable
   def initialize(page, input, total)
-    @page = page
+    @pages = page
     @input = input
     @totla = total
     @index = 0
@@ -11,7 +11,7 @@ class ScrapedTable
   def display
     Terminal::Table.new(
       row: [
-        [@total, @page, index, user_request]
+        [@total, @pages, index, user_request]
       ],
       headers: [
         'result',

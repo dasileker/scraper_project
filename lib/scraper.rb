@@ -5,13 +5,13 @@ class Scraper
   attr_reader :result
 
   def initialize
-    @page = page
+    @pages = page
     @query = query
-    @page = if @page == 1
-              ''
-            else
-              "/#{@pgae}"
-            end
+    @pages = if @pages == 1
+               ''
+             else
+               "/#{@pages}"
+             end
     @html = "https://katcr.to/usearch/#{@query}#{@page}/"
     @count = 0
     @result = 0

@@ -1,6 +1,6 @@
 # !/usr/bin/env ruby
 
-# rubocop : disable Lint/SelfAssignment, Metrics/MethodLength, Lint/NestedMethodDefinition
+# rubocop : disable Metrics/MethodLength, Lint/NestedMethodDefinition
 
 require 'nokogiri'
 require 'httparty'
@@ -26,32 +26,32 @@ def site(input = nil, query = nil, total = nil, page = 1)
       input = inputs(input)
     elsif query.to_i.zero?
       input = query.gsub(' ', '%20')
-      page = 1
+      pages = 1
     elsif query.to_i > (total / 20)
       p 'Page not found, wait to reboot.'
       sleep(3)
-      page = page
+      pages = page
     else
-      page = query.to_i
+      pages = query.to_i
     end
-    total = show_results(page, input)
+    total = show_results(pages, input)
     query = user
     break if query == 'exit'
   end
 
-  def show_results(page, input)
-    scrape = Scraper.new(input, page)
+  def show_results(pages, input)
+    scrape = Scraper.new(input, pages)
     scrape.scraper
     puts scrape.torent
     total = scrape.result
-    object = ScrapedTable.new(page, input, total)
+    object = ScrapedTable.new(pages, input, total)
     puts object.display
     p 'To go to  the next page, enter bellow, or search new Query. type exit to exit the  running code.'
     total
   end
 end
 
-# rubocop : enable Lint/SelfAssignment, Metrics/MethodLength, Lint/NestedMethodDefinition
+# rubocop : enable Metrics/MethodLength, Lint/NestedMethodDefinition
 p '***Search any Torrents***'
 p '*****what torrent you want to scrape?******'
 site
