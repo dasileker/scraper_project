@@ -1,6 +1,6 @@
 # !/usr/bin/env ruby
 
-# rubocop : disable Metrics/MethodLength, Lint/SelfAssignment, Lint/NestedMethodDefinition
+# rubocop : disable Lint/SelfAssignment, Metrics/MethodLength, Lint/NestedMethodDefinition
 
 require 'nokogiri'
 require 'httparty'
@@ -51,9 +51,7 @@ def site(input = nil, query = nil, total = nil, page = 1)
   end
 end
 
-# rubocop : enable Metrics/MethodLength, Lint/SelfAssignment, Lint/NestedMethodDefinition
+# rubocop : enable Lint/SelfAssignment, Metrics/MethodLength, Lint/NestedMethodDefinition
 p '***Search any Torrents***'
 p '*****what torrent you want to scrape?******'
 site
-
-p '/*****If you like this project please approve it\u{1f600}*****/'
