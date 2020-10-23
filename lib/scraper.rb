@@ -2,19 +2,17 @@ require 'httparty'
 require 'nokogiri'
 
 class Scraper
-
   attr_reader :result
 
   def initialize
-
-    @page = page 
+    @page = page
     @query = query
     @page = if @page == 1
               ''
             else
-              '/' + @pgae.to_s
+              "/#{@pgae}"
             end
-    @html = 'https://katcr.to/usearch/' + @query + @page + '/'
+    @html = "https://katcr.to/usearch/#{@query}#{@page}/"
     @count = 0
     @result = 0
   end
@@ -29,9 +27,9 @@ class Scraper
   def counter
     h2 = @vue.css('a.plain').text.split("\n")
     search = if !h2[1].nil?
-                h2[1].split(' ')
+               h2[1].split(' ')
              else
-              h2.push('0')
+               h2.push('0')
              end
     @result = search[-1].to_i
     @result
@@ -48,12 +46,11 @@ class Scraper
       decrypt = []
       extract_torrent.each { |text| decrypt << text unless text.empty? }
       table_list << (@count += 1).to_s
-      decrypt.each { |title_item| table_list << title_item.to_s + "\n" }
+      decrypt.each { |title_item| table_list << "#{title_item}\n" }
       table_list << "https://katcr.to#{@html[0]}\n"
-      table_list << "-----------------------------------"
+      table_list << '-----------------------------------'
       list << table_list
     end
     list
   end
-
 end

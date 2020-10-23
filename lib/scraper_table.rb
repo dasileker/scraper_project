@@ -1,6 +1,5 @@
 require 'terminal-table'
 
-
 class ScrapedTable
   def initialize(page, input, total)
     @page = page
@@ -18,7 +17,7 @@ class ScrapedTable
         'result',
         'page fetched',
         'page totals',
-        'fetched',
+        'fetched'
       ],
       style: {
         border_i: '-'
@@ -33,7 +32,4 @@ class ScrapedTable
   def user_request
     @input.gsub('%20', ' ')
   end
-
-
-
 end

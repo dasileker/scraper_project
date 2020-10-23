@@ -1,9 +1,10 @@
 # !/usr/bin/env ruby
 
+# rubocop : disable Metrics/MethodLength, Lint/SelfAssignment, Lint/NestedMethodDefinition
+
 require 'nokogiri'
 require 'httparty'
-require_relative '../lib/scraper.rb'
-
+require_relative '../lib/scraper'
 
 def input(input)
   gets.downcase.chomp.gsub(' ', '%20') if input.nil?
@@ -20,16 +21,16 @@ def user
 end
 
 def site(input = nil, query = nil, total = nil, page = 1)
-  loop do 
+  loop do
     if input.nil?
       input = inputs(input)
     elsif query.to_i.zero?
       input = query.gsub(' ', '%20')
       page = 1
-    elsif query.to_i > (total/ 20)
+    elsif query.to_i > (total / 20)
       p 'Page not found, wait to reboot.'
       sleep(3)
-      page = page 
+      page = page
     else
       page = query.to_i
     end
@@ -37,7 +38,6 @@ def site(input = nil, query = nil, total = nil, page = 1)
     query = user
     break if query == 'exit'
   end
-
 
   def show_results(page, input)
     scrape = Scraper.new(input, page)
@@ -51,9 +51,9 @@ def site(input = nil, query = nil, total = nil, page = 1)
   end
 end
 
+# rubocop : enable Metrics/MethodLength, Lint/SelfAssignment, Lint/NestedMethodDefinition
 p '***Search any Torrents***'
 p '*****what torrent you want to scrape?******'
 site
 
 p '/*****If you like this project please approve it\u{1f600}*****/'
-
