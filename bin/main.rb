@@ -18,3 +18,23 @@ def user
   end
   input
 end
+
+def site(input = nil, query = nil, total = nil, page = 1)
+  loop do 
+    if input.nil?
+      input = inputs(input)
+    elsif query.to_i.zero?
+      input = query.gsub(' ', '%20')
+      page = 1
+    elsif query.to_i > (total/ 20)
+      p 'Page not found, wait to reboot.'
+      sleep(3)
+      page = page 
+    else
+      page = query.to_i
+    end
+    total = show_results(page, input)
+    query = user
+    break if query == 'exit'
+  end
+end
