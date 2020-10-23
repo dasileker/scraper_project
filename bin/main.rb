@@ -50,3 +50,10 @@ def site(input = nil, query = nil, total = nil, page = 1)
     total
   end
 end
+
+p '/-/-/-/-/Search any Torrents/-/-/-/-/'
+p '/-/-/-/-/what torrent you want to scrape?/-/-/-/-/'
+site
+
+p '/*/NO ads here just torrent/*/'
+
