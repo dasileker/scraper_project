@@ -37,4 +37,16 @@ def site(input = nil, query = nil, total = nil, page = 1)
     query = user
     break if query == 'exit'
   end
+
+
+  def show_results(page, input)
+    scrape = Scraper.new(input, page)
+    scrape.scraper
+    puts scrape.torent
+    total = scrape.result
+    object = ScrapedTable.new(page, input, total)
+    puts object.display
+    p 'To go to  the next page, enter bellow, or search new Query. type exit to exit the  running code.'
+    total
+  end
 end
