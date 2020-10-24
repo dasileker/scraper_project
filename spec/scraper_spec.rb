@@ -15,6 +15,7 @@ describe Scraper do
       expect(@scraper.instance_variable_get(:@html)).not_to eq(new_session.instance_variable_get(:@html))
     end
   end
+
   describe '#counter' do
     it 'return the number of results fetched' do
       expect(@scraper.counter).to eq(645)
@@ -23,6 +24,22 @@ describe Scraper do
       new_session = Scraper.new('modern%20family', 2)
       new_session.scraper
       expect(@scraper.counter).not_to eq(new_session.counter)
+    end
+  end
+
+  describe '#torrent' do
+    it 'should display a total number of the list' do
+      list = @scraper.torrent
+      first = []
+      list[1].each { |item| first << item }
+      expect(first[0].to_i).to eq(2)
+    end
+
+    it 'check if number is increasing' do
+      list = @scraper.torrent
+      first = []
+      list[2].each { |item| first << item }
+      expect(first[0].to_i).not_to eq(2)
     end
   end
   

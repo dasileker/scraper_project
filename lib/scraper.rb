@@ -38,11 +38,11 @@ class Scraper
   def torrent
     counter
     list = []
-    @table.css('tr'.each) do |torren_item|
+    @table.css('tr').each do |table_item|
       table_list = []
-      href = torren_item.css('div.iaconbox a')
+      href = table_item.css('div.iaconbox a')
       @html = href.map { |link| link['href'] }
-      extract_torrent = torren_item.css('div.toeentname').text.to_s.split(/\n/)
+      extract_torrent = table_item.css('div.torrentname').text.to_s.split(/\n/)
       decrypt = []
       extract_torrent.each { |text| decrypt << text unless text.empty? }
       table_list << (@count += 1).to_s
