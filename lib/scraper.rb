@@ -4,7 +4,7 @@ require 'nokogiri'
 class Scraper
   attr_reader :result
 
-  def initialize
+  def initialize(query, page)
     @pages = page
     @query = query
     @pages = if @pages == 1

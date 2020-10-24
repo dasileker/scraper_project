@@ -5,6 +5,7 @@
 require 'nokogiri'
 require 'httparty'
 require_relative '../lib/scraper'
+require_relative '../lib/scraper_table'
 
 def input(input)
   gets.downcase.chomp.gsub(' ', '%20') if input.nil?
