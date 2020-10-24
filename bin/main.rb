@@ -24,7 +24,7 @@ end
 def site(input = nil, query = nil, total = nil, page = 1)
   loop do
     if input.nil?
-      input = inputs(input)
+      input = input(input)
     elsif query.to_i.zero?
       input = query.gsub(' ', '%20')
       pages = 1
