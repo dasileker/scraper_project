@@ -46,14 +46,14 @@ describe Scraper do
       list = @scraper.torrent
       first = []
       list[1].each { |item| first << item }
-      expect(first[1]).to eq ("Rick and Morty S04E03 1080p WEBRip x264-TBS TGx ⭐ \n")
+      expect(first[1]).to eq("Rick and Morty S04E03 1080p WEBRip x264-TBS TGx ⭐ \n")
     end
 
     it 'returns the list names that are not reapeted' do
       list = @scraper.torrent
       first = []
       list[2].each { |item| first << item }
-      expect(first[2]).not_to eq ("Rick and Morty S04E03 1080p WEBRip x264-TBS eztv \n")
+      expect(first[2]).not_to eq("Rick and Morty S04E03 1080p WEBRip x264-TBS eztv \n")
     end
 
     it 'returns the genre of the searchd item' do
@@ -84,5 +84,4 @@ describe Scraper do
       expect(first[6]).not_to eq("HD  \n")
     end
   end
-  
 end
