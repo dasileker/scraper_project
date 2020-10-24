@@ -1,8 +1,8 @@
-require 'httparty'
 require 'nokogiri'
+require 'httparty'
 
 class Scraper
-  attr_reader :result
+  attr_reader :total_results
 
   def initialize(query, page)
     @pages = page
@@ -12,45 +12,45 @@ class Scraper
              else
                "/#{@pages}"
              end
-    @html = "https://katcr.to/usearch/#{@query}#{@page}/"
-    @count = 0
-    @result = 0
+    @url = "https://katcr.to/usearch/#{@query}#{@page}/"
+    @item_count = 0
+    @total_results = 0
   end
 
-  def scraper
-    @raw = HTTParty.get(@html)
-    @vue = Nokogiri::HTML(@raw)
-    div = @vue.css('table.data')
+  def data
+    @raw_data = HTTParty.get(@url)
+    @format_page = Nokogiri::HTML(@raw_data)
+    div = @format_page.css('table.data')
     @table = div.css('tbody')
   end
 
-  def counter
-    h2 = @vue.css('a.plain').text.split("\n")
-    search = if !h2[1].nil?
-               h2[1].split(' ')
-             else
-               h2.push('0')
-             end
-    @result = search[-1].to_i
-    @result
+  def results_counter
+    h2 = @format_page.css('a.plain').text.split("\n")
+    search_results = if !h2[1].nil?
+                       h2[1].split(' ')
+                     else
+                       h2.push('0')
+                     end
+    @total_results = search_results[-1].to_i
+    @total_results
   end
 
-  def torrent
-    counter
-    list = []
+  def extract_torrent
+    results_counter
+    torrent_list = []
     @table.css('tr').each do |table_item|
-      table_list = []
+      list_item = []
       href = table_item.css('div.iaconbox a')
-      @html = href.map { |link| link['href'] }
-      extract_torrent = table_item.css('div.torrentname').text.to_s.split(/\n/)
-      decrypt = []
-      extract_torrent.each { |text| decrypt << text unless text.empty? }
-      table_list << (@count += 1).to_s
-      decrypt.each { |title_item| table_list << "#{title_item}\n" }
-      table_list << "https://katcr.to#{@html[0]}\n"
-      table_list << '-----------------------------------'
-      list << table_list
+      @url = href.map { |link| link['href'] }
+      title_extract = table_item.css('div.torrentname').text.to_s.split(/\n/)
+      torrent_decrypt = []
+      title_extract.each { |text| torrent_decrypt << text unless text.empty? }
+      list_item << (@item_count += 1).to_s
+      torrent_decrypt.each { |title_item| list_item << "#{title_item}\n" }
+      list_item << "https://katcr.to#{@url[0]}\n"
+      list_item << "***********************************************\n"
+      torrent_list << list_item
     end
-    list
+    torrent_list
   end
 end

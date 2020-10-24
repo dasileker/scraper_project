@@ -4,32 +4,34 @@ class ScrapedTable
   def initialize(page, input, total)
     @pages = page
     @input = input
-    @totla = total
+    @total = total
     @index = 0
   end
 
-  def display
+  def display_table
     Terminal::Table.new(
-      row: [
-        [@total, @pages, index, user_request]
+      rows: [
+        [@total, @pages, pages_index, user_query]
       ],
-      headers: [
-        'result',
-        'page fetched',
-        'page totals',
-        'fetched'
+      headings: [
+        'Total Results',
+        'Page Loaded',
+        'Total Pages',
+        'Searched'
       ],
       style: {
-        border_i: '-'
+        border_i: '*'
       }
     )
   end
 
-  def index
-    @index = @totla / 20
+  private
+
+  def pages_index
+    @index = @total / 20
   end
 
-  def user_request
+  def user_query
     @input.gsub('%20', ' ')
   end
 end
