@@ -9,7 +9,7 @@
 
 # live Demo link
 
-- live demo link : (https://e0529585-890b-43cb-b706-a04ed8cd2282.ws-eu01.gitpod.io/#/workspace/scraper_project)
+- live demo link : (https://d22b14f2-a858-4397-92d8-041468e22a58.ws-eu01.gitpod.io/#/workspace/scraper_project)
 
 
 # This project has four milestones
@@ -20,27 +20,60 @@
 ### Project Structure
 
 ```bash 
-├── Gemfile
-├── Gemfile.lock
+├── .github/workflow
+│   └── linters.yml
+|   └── test.yml
+├── bin
+│   └── main.rb
+├── lib
+│   └── scraper.rb
+│   └── table.rb
+│
+├── spec
+|   └── spec_helper.rb
+│   └── scraper_table_spec.rb
+|   └── scraper_spec.rb
+|
+├── .rspec
+├── .rubocop.yml
+├──  Gemfile
+├──  Gemfile.lock
 ├── README.md
-├── scrapee.rb
 ```
 
 # how to Run the repo 
 
 - downlod the repo from here : (https://github.com/dasileker/scraper_project/tree/features)
 
-- clone the repo go to Git bash & enter git clone: (git@github.com:dasileker/scraper_project.git )
+- clone the repo go to Git bash & enter git clone: (https://github.com/dasileker/scraper_project.git)
 
 - Go to cd scraper_project 
+
+- type bundle install
+
+- type cd bin
 
 - and type ruby scraper.rb
 
 
+# how to Run the Rspec
+
+- Go to cd scraper_project 
+
+- type bundle install
+
+- type gem install Rspec
+
+- and type rspec
+
+# Demo Images
+
+![image](./rspec.gif)
+
+
 # conclusion
 
-
-- as you can see I did add a logic to the scrape method to export the data into a csv file, and every time you run the scraper.rb it will generate a new data and exporte it to the csv file.
+- as you can see i did scrape another website callet torrent website to fetch all you want from the search query, from videos to filme name  or even company name of pdf file, and it gives you the total of link fitched at the end of the search query. 
 
 
 ## Authors:
