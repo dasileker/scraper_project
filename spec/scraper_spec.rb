@@ -41,6 +41,20 @@ describe Scraper do
       list[2].each { |item| first << item }
       expect(first[0].to_i).not_to eq(2)
     end
+
+    it 'shows the torrent name in the list' do
+      list = @scraper.torrent
+      first = []
+      list[1].each { |item| first << item }
+      expect(first[1]).to eq ("Rick and Morty S04E03 1080p WEBRip x264-TBS TGx ⭐ \n")
+    end
+
+    it 'returns the list names that are not reapeted' do
+      list = @scraper.torrent
+      first = []
+      list[2].each { |item| first << item }
+      expect(first[2]).not_to eq ("Rick and Morty S04E03 1080p WEBRip x264-TBS eztv \n")
+    end
   end
   
 end
