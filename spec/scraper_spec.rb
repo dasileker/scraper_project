@@ -55,6 +55,34 @@ describe Scraper do
       list[2].each { |item| first << item }
       expect(first[2]).not_to eq ("Rick and Morty S04E03 1080p WEBRip x264-TBS eztv \n")
     end
+
+    it 'returns the genre of the searchd item' do
+      list = @scraper.torrent
+      first = []
+      list[1].each { |item| first << item }
+      expect(first[5]).to eq("TV  >\n")
+    end
+
+    it 'returns the genre of the searchd item' do
+      list = @scraper.torrent
+      first = []
+      list[1].each { |item| first << item }
+      expect(first[5]).not_to eq("TV >\n")
+    end
+
+    it 'returns the torrent is not dubled' do
+      list = @scraper.torrent
+      first = []
+      list[1].each { |item| first << item }
+      expect(first[6]).to eq("HD \n")
+    end
+
+    it 'returns the torrent is not dubled' do
+      list = @scraper.torrent
+      first = []
+      list[1].each { |item| first << item }
+      expect(first[6]).not_to eq("HD  \n")
+    end
   end
   
 end
