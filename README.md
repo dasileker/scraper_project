@@ -76,6 +76,11 @@
 - as you can see i did scrape another website callet torrent website to fetch all you want from the search query, from videos to filme name  or even company name of pdf file, and it gives you the total of link fitched at the end of the search query. 
 
 
+## Upcoming Features
+
+- Add Links(where to buy) to the scrapper
+
+
 ## Authors:
 👤 Amine
 
